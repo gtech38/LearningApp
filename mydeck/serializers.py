@@ -9,6 +9,9 @@ class CardSerializer(serializers.ModelSerializer):
 '''
 
 class CardSerializer(serializers.ModelSerializer):
-	class Meta:
-		model = Card
-		fields =('card_id', 'card_type', 'card_content')
+	card_id = serializers.CharField(max_length=10)
+	card_type = serializers.CharField(max_length=10)
+	card_content = serializers.ListField(child=serializers.CharField(max_length=800))
+	#class Meta:
+	#	model = Card
+	#	fields =('id', 'card_id', 'card_type', 'card_content')
