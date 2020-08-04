@@ -83,7 +83,7 @@ DATABASES = {
         'PASSWORD': 'docker',
         'HOST': 'db',
         #'HOST': 'localhost',    #ISSUE WHERE docker-compose up requires this to be 'db' however python3 manage.py makemigrations requires '0.0.0.0'
-        #'HOST': '0.0.0.0',
+        #'HOST': '0.0.0.0',         #RESOLVED run migrations and makemigrations in the containers.
         'PORT': 5432,
     }
 }
