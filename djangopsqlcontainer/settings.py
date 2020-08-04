@@ -79,9 +79,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',    #ISSUE WHERE docker-compose up requires this to be 'db' however python3 manage.py makemigrations requires '0.0.0.0'
+        'USER': 'docker',
+        'PASSWORD': 'docker',
+        'HOST': 'db',
+        #'HOST': 'localhost',    #ISSUE WHERE docker-compose up requires this to be 'db' however python3 manage.py makemigrations requires '0.0.0.0'
         #'HOST': '0.0.0.0',
         'PORT': 5432,
     }
