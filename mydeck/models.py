@@ -20,6 +20,14 @@ class Card(models.Model):
 						models.CharField(max_length=800),
 						size=10, blank=True, default=list
 						)
+	def __str__(self):
+		return self.card_content[0]
+	def card_answer(self):
+			return self.card_content[0]
+	def card_question(self):
+		if self.card_type == "flash":
+			return self.card_content[0]
+		else: return self.card_type
 
 
 #Deck:
@@ -30,8 +38,10 @@ class Card(models.Model):
 #	return {0, '0000000000'}
 
 class Deck(models.Model):
-		deck_id = models.CharField(max_length=20, default='new_deck')
-		deck_cards = ArrayField(
-						models.CharField(max_length=10),
-						size=10, blank=True, default=list
+	deck_id = models.CharField(max_length=20, default='new_deck')
+	deck_cards = ArrayField(
+					models.CharField(max_length=10),
+					size=10, blank=True, default=list
 						)
+	def __str__(self):
+		return self.deck_id
