@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'mydeck.apps.MydeckConfig',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,9 +79,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'USER': 'docker',
+        'PASSWORD': 'docker',
         'HOST': 'db',
+        #'HOST': 'localhost',    #ISSUE WHERE docker-compose up requires this to be 'db' however python3 manage.py makemigrations requires '0.0.0.0'
+        #'HOST': '0.0.0.0',         #RESOLVED run migrations and makemigrations in the containers.
         'PORT': 5432,
     }
 }

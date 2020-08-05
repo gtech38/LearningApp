@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 
 urlpatterns = [
-    path('mydeck/', include('mydeck.urls')),
+    path('', include('mydeck.urls')),
     url(r'^admin/', admin.site.urls),
     #url(r'^Anki/Decks/', include('Decks.urls')),       #List multiple Anki Decks
     #url(r'^Anki/Deck/', include('Deck.urls')),         #Single Deck View
