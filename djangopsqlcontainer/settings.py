@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,17 +32,30 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'mydeck.apps.MydeckConfig',
-    'rest_framework',
+    'rest_framework', # new
+    #'corsheaders', # new
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mydeck.apps.MydeckConfig',
 ]
 
+REST_FRAMEWORK = { # new
+    'DEFAULT_PERMISSION_CLASSES': [ # new
+        'rest_framework.permissions.AllowAny', # new
+    ]
+}
+
+#CORS_ORIGIN_WHITELIST = ( # new
+#    'web:3000/' # new
+#)
+
 MIDDLEWARE = [
+    #'corsheaders.middleware.CorsMiddleware', # new
+    #'django.middleware.common.CommonMiddleware', # new
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

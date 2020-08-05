@@ -14,10 +14,11 @@ def index(request):
 	html = "<html><body>Welcome to Gogy</body><br>Today is " + current_date + ".</br><br>The time is " + current_time +".</br></html>"
 	return HttpResponse(html)
 
-from .models import Card
+from .models import Card, Deck
 from .serializers import CardSerializer
 from rest_framework import generics
 
 class CardListCreate(generics.ListCreateAPIView):
     queryset = Card.objects.all()
     serializer_class = CardSerializer
+

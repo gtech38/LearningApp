@@ -48,3 +48,7 @@ To start Application, go to root directory /djangopsqlcontainer and run 'docker-
 
 0.0.0.0:8000/admin
 0.0.0.0:8000/mydeck
+
+To access Python shell for Django App;
+docker exec -it learningapp_web_1 bash
+python3 manage.py shell
