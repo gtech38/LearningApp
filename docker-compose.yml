@@ -2,12 +2,13 @@
     
   services:
     db:
-      image: postgres:latest
-      environment:
-        - POSTGRES_DB=postgres
-        - POSTGRES_USER=docker
-        - POSTGRES_PASSWORD=docker
-        - POSTGRES_PORT= 5432
+      restart: always
+      #image: postgres:latest
+      #environment:
+      #  - POSTGRES_DB=postgres
+      #  - POSTGRES_USER=docker
+      #  - POSTGRES_PASSWORD=docker
+      #  - POSTGRES_PORT= 5432
       volumes:
         - database:/var/lib/postgresql/data
       build:
@@ -26,9 +27,26 @@
       volumes:
         - .:/code
       ports:
-        - "8000:8000"
+        - "3000:8000"
       depends_on:
         - db
+
+    #react:
+    #  restart: always
+    #  build: 
+    #    context: .
+    #    dockerfile: Dockerfile_react
+    #  volumes:
+    #    - .:/app
+        # One-way volume to use node_modules from inside image
+    #    - /app/table/node_modules
+    #  ports:
+    #    - "3000:3000"
+    #  environment:
+    #        - NODE_ENV=development
+    #  depends_on:
+    #    - web    
+    #  command: npm install
 #
 #    pgadmin:
 #      image: dpage/pgadmin4

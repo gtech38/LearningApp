@@ -15,10 +15,13 @@ def index(request):
 	return HttpResponse(html)
 
 from .models import Card, Deck
-from .serializers import CardSerializer
+from .serializers import CardSerializer, DeckSerializer
 from rest_framework import generics
 
-class CardListCreate(generics.ListCreateAPIView):
+class CardCreate(generics.ListCreateAPIView):
     queryset = Card.objects.all()
     serializer_class = CardSerializer
 
+class DeckCreate(generics.ListCreateAPIView):
+	queryset = Deck.objects.all()
+	serializer_class = DeckSerializer

@@ -36,8 +36,7 @@ djangopsqlcontainer/
       __init__.py
     __pycache__/
 
-  Example_AnkiApp_Basic_Deck.csv
-  Example_AnkiApp_TSV_Deck.zip
+   table/ ---------- React in it's own Django app. Single HTML, React manages the rest.
 
 
 ########################################################################################################################################
@@ -52,3 +51,10 @@ To start Application, go to root directory /djangopsqlcontainer and run 'docker-
 To access Python shell for Django App;
 docker exec -it learningapp_web_1 bash
 python3 manage.py shell
+
+########################################################################################
+#Sources:###############################################################################
+########################################################################################
+
+https://docs.djangoproject.com/en/3.0/intro/
+https://www.valentinog.com/blog/drf/

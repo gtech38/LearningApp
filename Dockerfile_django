@@ -1,4 +1,13 @@
-FROM python:3
+#FROM python:3
+#FROM amazonlinux
+FROM photon
+RUN tdnf install yum
+
+RUN yum install -y python3
+RUN yum install -y python-pip
+RUN yum install -y nodejs
+#Django requirements
+
 ENV PYTHONUNBUFFERED 1
 ENV DJANGO_SETTINGS_MODULE djangopsqlcontainer.settings
 RUN pip install --upgrade pip
@@ -6,4 +15,18 @@ RUN mkdir /code
 WORKDIR /code
 COPY requirements.txt /code/
 RUN pip install -r requirements.txt
+
+#React requirements
+COPY /table/package.json /code/
+COPY /table/package-lock.json /code/
+
+RUN npm install
+RUN npm i webpack webpack-cli --save-dev
+RUN npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev
+RUN npm i react react-dom --save-dev
+EXPOSE 3000
+
 COPY . /code/
+
+CMD npm run dev
+CMD python3 manage.py runserver 0.0.0.0:8000

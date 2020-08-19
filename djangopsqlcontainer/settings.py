@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mydeck.apps.MydeckConfig',
+    'table',
 ]
 
 REST_FRAMEWORK = { # new
