@@ -23,11 +23,10 @@ class Card(models.Model):
 	def __str__(self):
 		return self.card_content[0]
 	def card_answer(self):
-			return self.card_content[0]
-	def card_question(self):
-		if self.card_type == "flash":
-			return self.card_content[0]
-		else: return self.card_type
+		return self.card_content[0]
+	def card_question(card_id):
+		return self.card_content[card_id]
+		
 
 
 #Deck:
@@ -45,3 +44,6 @@ class Deck(models.Model):
 						)
 	def __str__(self):
 		return self.deck_id
+
+	def get_deck(self):
+		return self
