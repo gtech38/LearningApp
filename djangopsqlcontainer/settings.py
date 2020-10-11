@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'rest_framework', # new
-    #'corsheaders', # new
+    'corsheaders', # new
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mydeck.apps.MydeckConfig',
+    'frontend',
 ]
 
 REST_FRAMEWORK = { # new
@@ -54,8 +55,8 @@ REST_FRAMEWORK = { # new
 #)
 
 MIDDLEWARE = [
-    #'corsheaders.middleware.CorsMiddleware', # new
-    #'django.middleware.common.CommonMiddleware', # new
+    'corsheaders.middleware.CorsMiddleware', # new
+    'django.middleware.common.CommonMiddleware', # new
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -64,6 +65,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'djangopsqlcontainer.urls'
 
@@ -92,12 +95,12 @@ WSGI_APPLICATION = 'djangopsqlcontainer.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'docker',
-        'PASSWORD': 'docker',
-        'HOST': 'db',
-        #'HOST': 'localhost',    #ISSUE WHERE docker-compose up requires this to be 'db' however python3 manage.py makemigrations requires '0.0.0.0'
+        'NAME': 'template1',
+        'USER': 'gokulnune',
+        #'HOST': 'db',
+        #'HOST': 'postgresql://localhost',    #ISSUE WHERE docker-compose up requires this to be 'db' however python3 manage.py makemigrations requires '0.0.0.0'
         #'HOST': '0.0.0.0',         #RESOLVED run migrations and makemigrations in the containers.
+        #'HOST' : learningapp_db_1
         'PORT': 5432,
     }
 }

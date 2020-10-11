@@ -16,13 +16,22 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import TemplateView
+
+from mydeck import views as mydeck_views
 
 urlpatterns = [
-    path('', include('mydeck.urls')),
+    path('api/', include('mydeck.urls')),
+    path('', include('frontend.urls')),
     url(r'^admin/', admin.site.urls),
-    #url(r'^Anki/Decks/', include('Decks.urls')),       #List multiple Anki Decks
-    #url(r'^Anki/Deck/', include('Deck.urls')),         #Single Deck View
-    #url(r'^Anki/AddCard/', include('AddCard.urls')),   #Adding a card
-	#url(r'^Anki/Browse/', include('Browse.urls')),     #Browse content if available
-    #url(r'^Anki/Stats/', include('Stats.urls'))        #Dashboard of users performance
+
+    #paths for mydeck app
+    #path('', mydeck_views.frontend),
+    path('deck/', TemplateView.as_view(template_name='template.html')),    #path('deck/', mydeck_views.frontend),
+    #path('card/', mydeck_views.frontend),
+    #path('deck/<slug:slug>/', mydeck_views.frontend),
+    #path('deck/<slug:slug>/play', mydeck_views.playcards),
+    #path('card/<slug:slug>/', mydeck_views.frontend),
+    #path('mydeck', TemplateView.as_view(template_name='index.html')),
+    #path('deck/create/' mydeck_views.frontend),
 ]

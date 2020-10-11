@@ -1,0 +1,64 @@
+Arguments: 
+  /usr/local/bin/node /Users/gokulnune/.yarn/bin/yarn.js build
+
+PATH: 
+  /Users/gokulnune/.yarn/bin:/Users/gokulnune/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  12.18.4
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/gokulnune/Code/master_branches/LearningApp/frontend/package.json: Unexpected token } in JSON at position 411
+      at JSON.parse (<anonymous>)
+      at /Users/gokulnune/.yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/Users/gokulnune/.yarn/lib/cli.js:310:30)
+      at /Users/gokulnune/.yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "frontend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "dev": "webpack --mode development ./src/index.js --output ./static/frontend/main.js",
+      "build": "webpack --mode production ./src/index.js --output ./static/frontend/main.js",
+      "storybook": "start-storybook -p 6006",
+      "build-storybook": "build-storybook",
+      "start": "react-scripts start",
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "@babel/core": "^7.11.6",
+      "@babel/preset-env": "^7.11.5",
+      "@babel/preset-react": "^7.10.4",
+      "@storybook/addon-actions": "^6.0.21",
+      "@storybook/addon-essentials": "^6.0.21",
+      "@storybook/addon-links": "^6.0.21",
+      "@storybook/react": "^6.0.21",
+      "babel-loader": "^8.1.0",
+      "react": "^16.13.1",
+      "react-dom": "^16.13.1",
+      "react-is": "^16.13.1",
+      "webpack": "^4.44.2",
+      "webpack-cli": "^3.3.12",
+      "react-scripts": "0.9.5"
+    },
+    "dependencies": {}
+  
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
