@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-
 import axios from 'axios';
 
-class AddDeckForm extends React.Component {
+class AddDeck extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,14 +21,11 @@ class AddDeckForm extends React.Component {
     const deck_name = event.target.elements.addDeck.value;
     event.preventDefault();
 
-    axios.post('/api/decks/create/', {
-      deck_name: deck_name
-    })
+    axios.post('/api/decks/create/', {deck_name: deck_name})
     .then(res => console.log(res))
     .catch(error=>console.error(error));
-
-    alert('A new deck was created: ' + deck_name);
-    
+    //alert('A new deck was created: ' + deck_name);
+    location.reload()
     console.log(deck_name);
   }
 
@@ -47,5 +43,8 @@ class AddDeckForm extends React.Component {
 
 export default AddDeck;
 
-const container = document.getElementById("AddDeck");
-render(<AddDeckForm />, container);
+
+
+
+
+

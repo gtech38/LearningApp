@@ -31,7 +31,8 @@ class Deck(models.Model):
 		Hides slug field in admin, saves slug to use in url
 		"""
 		if not self.slug:
-			self.slug = slugify(self.deck_name)
+			slug_str = self.deck_name + "-" + str(self.uid)
+			self.slug = slugify(slug_str)
 		super(Deck, self).save(*args, **kwargs)
 		#slug_str = self.deck_name + "-" + str(self.uid)	
 		#self.slug = slugify(slug_str)
@@ -93,7 +94,7 @@ class Card(models.Model):
 		Hides slug field in admin, saves slug to use in url
 		"""
 		if not self.slug:
-			slug_str = self.card_type + " " + self.card_answer
+			slug_str = str(self.deck_id) + "-" + str(self.uid)
 			self.slug = slugify(slug_str)
 		super(Card, self).save(*args, **kwargs)
 

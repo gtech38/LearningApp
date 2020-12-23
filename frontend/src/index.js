@@ -1,3 +1,9 @@
-import Decks from "./stories/Decks";
-import AddDeckForm from "./stories/AddDeck";
+//import Decks from "./components/Decks";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
 
+ReactDOM.render(
+<App />,
+document.getElementById('root')
+);

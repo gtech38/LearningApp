@@ -47,19 +47,18 @@ class CardSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Card
 		fields = '__all__'
+		lookup_field = 'slug'
 		#fields =('card_type', 'card_question', 'card_answer')
 
 
 class DeckSerializer(serializers.ModelSerializer):
 	deck_name = serializers.CharField(max_length=30, default = '')
 	slug = serializers.CharField(max_length=64, default = '')
-	#cards_deck = CardSerializer(required=False, many=True)
-	#cards_deck = serializers.JSONField(Card, )
-	#Set deck_id when deck is created.
 
+	#Set deck_id when deck is created.
 	def create(self, validated_data): 
 		return Deck.objects.create(**validated_data)
-
+			
 	def update(self, instance, validated_data):
 		instance.deck_name = validated_data.get('deck_name')
 		#instance.deck_cards = validated_data.get('deck_cards', instance.deck_cards)
@@ -73,7 +72,8 @@ class DeckSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Deck
 		#fields = '__all__'
-		fields = ('deck_name', 'slug')
+		fields = ('deck_name', 'slug', 'uid')
+		lookup_field = 'slug'
 		#exclude = ('cards_deck', 'id')
 		#fields =('id', 'deck_name', 'deck_cards', 'cards')
 

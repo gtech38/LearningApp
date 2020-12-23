@@ -24,10 +24,10 @@ urlpatterns = [
     path('api/', include('mydeck.urls')),
     path('', include('frontend.urls')),
     url(r'^admin/', admin.site.urls),
-
+    #url(r'^',TemplateView.as_view(template_name="index.html")),
     #paths for mydeck app
     #path('', mydeck_views.frontend),
-    path('deck/', TemplateView.as_view(template_name='template.html')),    #path('deck/', mydeck_views.frontend),
+    #path('deck/', TemplateView.as_view(template_name='template.html')),    #path('deck/', mydeck_views.frontend),
     #path('card/', mydeck_views.frontend),
     #path('deck/<slug:slug>/', mydeck_views.frontend),
     #path('deck/<slug:slug>/play', mydeck_views.playcards),

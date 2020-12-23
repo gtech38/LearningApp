@@ -32,8 +32,9 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'rest_framework', # new
+    'rest_framework', # new toolkit for building Web APIs.
     'corsheaders', # new
+    #'webpack_loader', #new 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +50,15 @@ REST_FRAMEWORK = { # new
         'rest_framework.permissions.AllowAny', # new
     ]
 }
+'''
+#config webpack-loader 
+WEBPACK_LOADER = {
+    'DEFAULT': {
+            'BUNDLE_DIR_NAME': 'bundles/',
+            'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.dev.json'),
+        }
+}
+'''
 
 #CORS_ORIGIN_WHITELIST = ( # new
 #    'web:3000/' # new
@@ -73,6 +83,7 @@ ROOT_URLCONF = 'djangopsqlcontainer.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        #'DIRS': [os.path.join(BASE_DIR, "templates")], #templates is index page for react on django servers
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -94,14 +105,38 @@ WSGI_APPLICATION = 'djangopsqlcontainer.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'template1',
-        'USER': 'gokulnune',
+        'ENGINE': 'djongo',
+        'ENFORCE_SCHEMA': True,
+            'LOGGING': {
+                'version': 1,
+                'loggers': {
+                    'djongo': {
+                        'level': 'DEBUG',
+                        'propogate': False,                        
+                    }
+                },
+             },
+        'NAME': 'learningapp',
+        'CLIENT': {
+            #'host': 'mongo',
+            'host': '0.0.0.0',
+            'port': 27017,
+            'username': 'gokulnune',
+            'password': 'example',
+            'authSource': 'admin',
+        }
+        
+    #local postgresql
+        #'ENGINE': 'django.db.backends.postgresql',
+        #'NAME': 'template1',
+        #'USER': 'gokulnune',
+        #'PORT': 5432,
+        
         #'HOST': 'db',
         #'HOST': 'postgresql://localhost',    #ISSUE WHERE docker-compose up requires this to be 'db' however python3 manage.py makemigrations requires '0.0.0.0'
         #'HOST': '0.0.0.0',         #RESOLVED run migrations and makemigrations in the containers.
         #'HOST' : learningapp_db_1
-        'PORT': 5432,
+        
     }
 }
 

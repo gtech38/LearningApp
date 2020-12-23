@@ -1,0 +1,8 @@
+FROM node:latest
+RUN mkdir /frontend
+WORKDIR /frontend
+COPY .
+RUN rm -rIf node_modules
+RUN npm install --save-dev webpack
+RUN npm install webpack-cli
+RUN yarn build
